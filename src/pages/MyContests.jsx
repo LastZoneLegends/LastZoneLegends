@@ -25,7 +25,7 @@ useEffect(() => {
     const { currentUser } = useAuth();
     const [tournaments, setTournaments] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [statusFilter, setStatusFilter] = useState('all');
+    const [statusFilter, setStatusFilter] = useState('upcoming');
 
     const filterOptions = [
         { value: 'upcoming', label: 'Upcoming' },
@@ -151,7 +151,7 @@ useEffect(() => {
                                 : `You don't have any ${statusFilter} tournaments`
                         }
                         action={
-                            <Link to="/tournaments" className="text-primary-400 hover:text-primary-300">
+                            <Link to="/home" className="text-primary-400 hover:text-primary-300">
                                 Browse tournaments →
                             </Link>
                         }
@@ -214,6 +214,7 @@ useEffect(() => {
         </Layout>
     );
 }
+
 
 
 
