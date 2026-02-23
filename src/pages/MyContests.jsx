@@ -127,10 +127,7 @@ useEffect(() => {
   {filterOptions.map((option) => (
     <button
       key={option.value}
-      onClick={() => {
-  setStatusFilter(filter.value);
-  navigate(`/my-contests?tab=${filter.value}`);
-}}
+      onClick={() => setStatusFilter(option.value)}
       className={`flex-1 py-3 text-sm font-semibold rounded-2xl transition-all duration-300
         ${
           statusFilter === option.value
@@ -217,6 +214,7 @@ useEffect(() => {
         </Layout>
     );
 }
+
 
 
 
