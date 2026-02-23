@@ -6,6 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Mail, Lock, Eye, EyeOff, Download, X, Smartphone, Bell, BellRing } from 'lucide-react';
 import Button from '../components/common/Button';
 import Input from '../components/common/Input';
+import { auth, googleProvider, db } from '../firebase/config';
 
 // Helper to detect iOS
 const isIOS = () => {
@@ -464,6 +465,7 @@ export default function Login() {
     </div>
   );
 }
+
 
 
 
