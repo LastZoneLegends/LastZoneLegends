@@ -1,3 +1,4 @@
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { signInWithPopup } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -28,58 +29,10 @@ export default function Login() {
   const [showInstallPopup, setShowInstallPopup] = useState(false);
   const [showNotificationPopup, setShowNotificationPopup] = useState(false);
   const [notificationPermission, setNotificationPermission] = useState('default');
-  const { login } = useAuth();
+  const { login, refreshUserData } = useAuth();
   const navigate = useNavigate();
 
-  const handleGoogleLogin = async () => {
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
-
-    const userRef = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userRef);
-
-    // Agar user document exist nahi karta
-    if (!userSnap.exists()) {
-
-      const generateReferralCode = () => {
-        return "LZL" + Math.random().toString(36).substring(2, 8).toUpperCase();
-      };
-
-      await setDoc(userRef, {
-        uid: user.uid,
-        displayName: user.displayName || "User",
-        email: user.email || "",
-        phone: "",
-        photoURL: user.photoURL || "",
-
-        walletBalance: 0,
-        depositedBalance: 0,
-        winningBalance: 0,
-        bonusBalance: 0,
-
-        matchesPlayed: 0,
-        totalKills: 0,
-        totalWinnings: 0,
-
-        referralCode: generateReferralCode(),
-        referredBy: null,
-
-        role: "user",
-        status: "active",
-        kycStatus: "pending",
-
-        createdAt: new Date(),
-        updatedAt: new Date()
-      });
-    }
-
-    navigate("/home");
-
-  } catch (error) {
-    console.error("Google Login Error:", error);
-  }
-};
+  
 
   // Check and show notification permission popup
   useEffect(() => {
@@ -175,6 +128,56 @@ export default function Login() {
   const handleDismissPopup = () => {
     setShowInstallPopup(false);
   };
+
+  const handleGoogleLogin = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    // Agar user document exist nahi karta
+    if (!userSnap.exists()) {
+
+      const generateReferralCode = () => {
+        return "LZL" + Math.random().toString(36).substring(2, 8).toUpperCase();
+      };
+
+      await setDoc(userRef, {
+        uid: user.uid,
+        displayName: user.displayName || "User",
+        email: user.email || "",
+        phone: "",
+        photoURL: user.photoURL || "",
+
+        walletBalance: 0,
+        depositedBalance: 0,
+        winningBalance: 0,
+        bonusBalance: 0,
+
+        matchesPlayed: 0,
+        totalKills: 0,
+        totalWinnings: 0,
+
+        referralCode: generateReferralCode(),
+        referredBy: null,
+
+        role: "user",
+        status: "active",
+        kycStatus: "pending",
+
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+    }
+
+    navigate("/home");
+
+  } catch (error) {
+    console.error("Google Login Error:", error);
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -460,4 +463,5 @@ export default function Login() {
     </div>
   );
 }
+
 
