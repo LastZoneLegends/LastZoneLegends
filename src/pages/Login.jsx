@@ -274,8 +274,9 @@ export default function Login() {
 
 <div className="flex justify-center mt-4">
   <button
-    onClick={handleGoogleLogin}
-    className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg active:scale-95 transition"
+     type="button"
+     onClick={handleGoogleLogin}
+     className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg active:scale-95 transition"
   >
     <img
       src="https://developers.google.com/identity/images/g-logo.png"
@@ -463,5 +464,6 @@ export default function Login() {
     </div>
   );
 }
+
 
 
