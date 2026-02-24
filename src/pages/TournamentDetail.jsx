@@ -589,21 +589,7 @@ export default function TournamentDetail() {
 {tournament?.results ? (
 
   <div className="mt-4 space-y-4">
-
-    {/* Header */}
-    <div className="flex justify-between items-center">
-      <h2 className="text-white text-lg font-bold">
-        Match Results
-      </h2>
-
-      <div className="text-right">
-        <p className="text-xs text-gray-400">Prize Pool</p>
-        <p className="text-primary-400 font-bold">
-          ₹{tournament.prizePool || 0}
-        </p>
-      </div>
-    </div>
-
+  
     {/* 1st Place */}
     {tournament.results.first && (
       <div className="bg-yellow-500/10 border border-yellow-500/30 
@@ -1024,6 +1010,7 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
 
