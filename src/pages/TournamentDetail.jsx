@@ -388,6 +388,15 @@ export default function TournamentDetail() {
             >
               Prizes
             </button>
+            <button
+              onClick={() => setActiveTab('results')}
+              className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${activeTab === 'results'
+                ? 'bg-primary-500 text-white shadow-lg'
+                : 'text-gray-400 hover:text-white'
+                }`}
+            >
+              Results
+            </button>
           </div>
 
           {/* Tab Content */}
@@ -855,3 +864,4 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
