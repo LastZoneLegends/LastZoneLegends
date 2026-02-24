@@ -578,7 +578,7 @@ export default function TournamentDetail() {
                         <Trophy className="w-5 h-5 text-blue-400" />
                       </div>
                       <div>
-                        <h2 className="text-lg font-bold text-white mb-4">Match Results</h2>
+                        <h2 className="text-lg font-bold text-white mb-4 flex items-center justify-center">Match Results</h2>
                         
                       </div>
                     </div>
@@ -883,6 +883,7 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
 
