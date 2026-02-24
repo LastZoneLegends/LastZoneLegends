@@ -568,6 +568,14 @@ export default function TournamentDetail() {
               </div>
             )}
 
+            {/* Results Tab */}
+            {activeTab === 'results' && (
+  <div className="mt-4 text-white">
+    <h2 className="text-lg font-bold mb-3">Match Results</h2>
+    <p className="text-gray-400">Results will be displayed here.</p>
+  </div>
+)}
+
             {/* Prizes Tab */}
             {activeTab === 'prizes' && (
               <div className="space-y-4 animate-fade-in">
@@ -864,4 +872,5 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
