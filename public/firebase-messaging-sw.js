@@ -30,3 +30,19 @@ messaging.onBackgroundMessage((payload) => {
 
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
+
+self.addEventListener("notificationclick", function (event) {
+  event.notification.close();
+
+  const clickAction = event.notification.data?.url;
+
+  if (clickAction) {
+    event.waitUntil(
+      clients.openWindow(clickAction)
+    );
+  } else {
+    event.waitUntil(
+      clients.openWindow("/")
+    );
+  }
+});
