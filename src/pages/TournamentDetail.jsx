@@ -603,11 +603,11 @@ export default function TournamentDetail() {
         🥇 1st Place
       </h3>
 
-      {tournament.results.first.odeuId === currentUser?.uid && (
-        <span className="text-xs bg-yellow-400 text-black px-2 py-1 rounded-full font-bold">
-          🎉 You Won
-        </span>
-      )}
+      {tournament.results?.first?.odeuUserId === currentUser?.uid && (
+  <span className="ml-2 px-2 py-1 text-xs bg-green-500/20 text-green-400 rounded-full">
+    🎉 You Won
+  </span>
+)}
     </div>
 
     <p className="text-white font-semibold">
@@ -964,6 +964,7 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
 
