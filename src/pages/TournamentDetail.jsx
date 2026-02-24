@@ -585,68 +585,95 @@ export default function TournamentDetail() {
       </div>
 
       {/* If Results Exist */}
-      {tournament?.results ? (
+{tournament?.results ? (
 
-        <div className="space-y-3">
+  <div className="space-y-4">
 
-          {/* 1st Place */}
-          {tournament.results.first && (
-            <div className="bg-yellow-500/10 border border-yellow-500/30 p-4 rounded-xl">
-              <h3 className="text-yellow-400 font-bold text-lg mb-1">
-                🥇 1st Place
-              </h3>
-              <p className="text-white font-semibold">
-                {tournament.results.first.name}
-              </p>
-              <p className="text-yellow-400 font-bold">
-                ₹ {tournament.prize1}
-              </p>
-            </div>
-          )}
+    {/* 1st Place */}
+    {tournament.results.first && (
+      <div className="bg-yellow-500/10 border border-yellow-500/30 p-4 rounded-xl">
 
-          {/* 2nd Place */}
-          {tournament.results.second && (
-            <div className="bg-gray-400/10 border border-gray-400/30 p-4 rounded-xl">
-              <h3 className="text-gray-300 font-bold text-lg mb-1">
-                🥈 2nd Place
-              </h3>
-              <p className="text-white font-semibold">
-                {tournament.results.second.name}
-              </p>
-              <p className="text-gray-300 font-bold">
-                ₹ {tournament.prize2}
-              </p>
-            </div>
-          )}
+        <h3 className="text-yellow-400 font-bold text-lg mb-1">
+          🥇 1st Place
+        </h3>
 
-          {/* 3rd Place */}
-          {tournament.results.third && (
-            <div className="bg-orange-500/10 border border-orange-500/30 p-4 rounded-xl">
-              <h3 className="text-orange-400 font-bold text-lg mb-1">
-                🥉 3rd Place
-              </h3>
-              <p className="text-white font-semibold">
-                {tournament.results.third.name}
-              </p>
-              <p className="text-orange-400 font-bold">
-                ₹ {tournament.prize3}
-              </p>
-            </div>
-          )}
+        <p className="text-white font-semibold">
+          {tournament.results.first.name}
+        </p>
 
-        </div>
-
-      ) : (
-
-        /* If No Results Yet */
-        <div className="text-center py-6">
-          <Trophy className="w-10 h-10 text-gray-500 mx-auto mb-3" />
-          <p className="text-gray-400">
-            Results not announced yet.
+        {tournament.perKillPrize > 0 ? (
+          <div className="mt-2 text-sm space-y-1">
+            <p className="text-gray-300">
+              Position Prize: ₹{tournament.prize1 || 0}
+            </p>
+            <p className="text-gray-300">
+              Kills: {tournament.results.first.kills || 0}
+            </p>
+            <p className="text-gray-300">
+              Per Kill: ₹{tournament.perKillPrize}
+            </p>
+            <p className="text-yellow-400 font-bold text-lg mt-2">
+              Total: ₹
+              {(tournament.prize1 || 0) +
+                ((tournament.results.first.kills || 0) *
+                  tournament.perKillPrize)}
+            </p>
+          </div>
+        ) : (
+          <p className="text-yellow-400 font-bold text-xl mt-2">
+            ₹{tournament.prize1 || 0}
           </p>
-        </div>
+        )}
+      </div>
+    )}
 
-      )}
+    {/* 2nd Place */}
+    {tournament.results.second && (
+      <div className="bg-gray-400/10 border border-gray-400/30 p-4 rounded-xl">
+
+        <h3 className="text-gray-300 font-bold text-lg mb-1">
+          🥈 2nd Place
+        </h3>
+
+        <p className="text-white font-semibold">
+          {tournament.results.second.name}
+        </p>
+
+        <p className="text-gray-300 font-bold text-lg mt-2">
+          ₹{tournament.prize2 || 0}
+        </p>
+      </div>
+    )}
+
+    {/* 3rd Place */}
+    {tournament.results.third && (
+      <div className="bg-orange-500/10 border border-orange-500/30 p-4 rounded-xl">
+
+        <h3 className="text-orange-400 font-bold text-lg mb-1">
+          🥉 3rd Place
+        </h3>
+
+        <p className="text-white font-semibold">
+          {tournament.results.third.name}
+        </p>
+
+        <p className="text-orange-400 font-bold text-lg mt-2">
+          ₹{tournament.prize3 || 0}
+        </p>
+      </div>
+    )}
+
+  </div>
+
+) : (
+  /* No Results Yet */
+  <div className="text-center py-6">
+    <Trophy className="w-10 h-10 text-gray-500 mx-auto mb-3" />
+    <p className="text-gray-400">
+      Results not announced yet.
+    </p>
+  </div>
+)}
 
     </Card>
   </div>
@@ -948,5 +975,6 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
