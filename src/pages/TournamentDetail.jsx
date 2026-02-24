@@ -573,8 +573,12 @@ export default function TournamentDetail() {
   <div className="mt-4 text-white animate-fade-in">
     {/* Prize Distribution */}
     <Card className="bg-dark-400">
-      <h3 className="text-lg font-bold text-white mb-4">Match Results</h3>
+      <Trophy className="w-5 h-5 text-green-400 mx-auto mb-1" />
+      <h2 className="text-lg font-bold text-white mb-4">Match Results</h2>
     <p className="text-gray-400">Results will be displayed here.</p>
+      <pre className="text-xs text-green-400 mt-3">
+  {JSON.stringify(tournament?.results, null, 2)}
+</pre>
     </Card>
   </div>
 )}
@@ -875,6 +879,7 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
 
