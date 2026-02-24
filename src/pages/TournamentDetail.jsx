@@ -585,12 +585,7 @@ export default function TournamentDetail() {
       </div>
 
 {/* If Results Exist */}
-{tournament?.results ? (
-
-  <div className="space-y-6">
-
-    {/* ===== 1st Place - Champion Card ===== */}
-    {/* ================= RESULTS SECTION ================= */}
+{/* ================= RESULTS SECTION ================= */}
 {tournament?.results ? (
 
   <div className="mt-4 space-y-4">
@@ -1029,6 +1024,7 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
 
