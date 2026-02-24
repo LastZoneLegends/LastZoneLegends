@@ -570,9 +570,13 @@ export default function TournamentDetail() {
 
             {/* Results Tab */}
             {activeTab === 'results' && (
-  <div className="mt-4 text-white">
+  <div className="mt-4 text-white animate-fade-in">
+    {/* Prize Distribution */}
+    <Card className="bg-dark-400">
     <h2 className="text-lg font-bold mb-3">Match Results</h2>
+      <h3 className="font-semibold text-white mb-4">Match Results</h3>
     <p className="text-gray-400">Results will be displayed here.</p>
+    </Card>
   </div>
 )}
 
@@ -872,5 +876,6 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
