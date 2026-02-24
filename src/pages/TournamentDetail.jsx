@@ -591,18 +591,34 @@ export default function TournamentDetail() {
 
           {/* 1st Place */}
           {tournament.results.first && (
-            <div className="bg-yellow-500/10 border border-yellow-500/30 p-4 rounded-xl">
-              <h3 className="text-yellow-400 font-bold text-lg mb-1">
-                🥇 1st Place
-              </h3>
-              <p className="text-white font-semibold">
-                {tournament.results.first.name}
-              </p>
-              <p className="text-yellow-400 font-bold">
-                ₹ {tournament.prize1}
-              </p>
-            </div>
-          )}
+  <div
+    className={`p-4 rounded-xl border transition-all ${
+      tournament.results.first.odeuId === currentUser?.uid
+        ? "bg-yellow-500/20 border-yellow-400 shadow-lg shadow-yellow-500/30"
+        : "bg-yellow-500/10 border-yellow-500/30"
+    }`}
+  >
+    <div className="flex justify-between items-center mb-1">
+      <h3 className="text-yellow-400 font-bold text-lg">
+        🥇 1st Place
+      </h3>
+
+      {tournament.results.first.odeuId === currentUser?.uid && (
+        <span className="text-xs bg-yellow-400 text-black px-2 py-1 rounded-full font-bold">
+          🎉 You Won
+        </span>
+      )}
+    </div>
+
+    <p className="text-white font-semibold">
+      {tournament.results.first.name}
+    </p>
+
+    <p className="text-yellow-400 font-bold">
+      ₹ {tournament.prize1}
+    </p>
+  </div>
+)}
 
           {/* 2nd Place */}
           {tournament.results.second && (
@@ -948,6 +964,7 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
 
