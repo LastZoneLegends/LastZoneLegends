@@ -579,9 +579,10 @@ export default function TournamentDetail() {
                       </div>
                       <div>
                         <h2 className="text-lg font-bold text-white mb-4">Match Results</h2>
-                        <p className="text-gray-400">Results will be displayed here.</p>
+                        
                       </div>
                     </div>
+      <p className="text-gray-400">Results will be displayed here.</p>
                   </Card>
   </div>
 )}
@@ -882,6 +883,7 @@ export default function TournamentDetail() {
     </Layout >
   );
 }
+
 
 
 
